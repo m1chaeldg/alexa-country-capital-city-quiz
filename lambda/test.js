@@ -1,4 +1,5 @@
 const utils = require("./utils");
+const questionData = require("./question");
 
 const GAME_LENGTH = 5;
 
@@ -27,5 +28,12 @@ function populateGameQuestionIndexes(translatedQuestions) {
 }
 
 let indexes = utils.sampleIndexes(20, 5);
-
+let ans = utils.populateRoundAnswers(
+  indexes,
+  1,
+  3,
+  questionData.COUNTRY_CAPITAL_EN_US,
+  4
+);
 console.log(indexes);
+console.log(ans);

@@ -1,13 +1,10 @@
 {
-  "skillManifest": {
+  "manifest": {
     "publishingInformation": {
       "locales": {
         "en-US": {
           "summary": "Capital and country quiz",
           "examplePhrases": [
-            "Alexa open capital and country trivia",
-            "Alexa tell capital and country trivia to start a game",
-            "Alexa tell capital and country trivia I want to play",
             "Alexa open capital and country quiz",
             "Alexa tell capital and country quiz to start a game",
             "Alexa tell capital and country quiz I want to play"

@@ -2,51 +2,13 @@
 /* eslint-disable  no-console */
 
 const utils = require("./utils");
-const Alexa = require('ask-sdk-core');
-const questions = require('./questions');
-const i18n = require('i18next');
-const sprintf = require('i18next-sprintf-postprocessor');
+const Alexa = require("ask-sdk-core");
+const questions = require("./questions");
+const i18n = require("i18next");
+const sprintf = require("i18next-sprintf-postprocessor");
 
 const ANSWER_COUNT = 4;
 const GAME_LENGTH = 10;
-
-function populateRoundAnswers(
-  gameQuestionIndexes,
-  correctAnswerIndex,
-  correctAnswerTargetLocation,
-  translatedQuestions
-) {
-  const answers = [];
-  const translatedQuestion =
-    translatedQuestions[gameQuestionIndexes[correctAnswerIndex]];
-  const answersCopy = translatedQuestion[
-    Object.keys(translatedQuestion)[0]
-  ].slice();
-  let index = answersCopy.length;
-
-  if (index < ANSWER_COUNT) {
-    throw new Error("Not enough answers for question.");
-  }
-
-  // Shuffle the answers, excluding the first element which is the correct answer.
-  for (let j = 1; j < answersCopy.length; j += 1) {
-    const rand = Math.floor(Math.random() * (index - 1)) + 1;
-    index -= 1;
-
-    const swapTemp1 = answersCopy[index];
-    answersCopy[index] = answersCopy[rand];
-    answersCopy[rand] = swapTemp1;
-  }
-
-  // Swap the correct answer into the target location
-  for (let i = 0; i < ANSWER_COUNT; i += 1) {
-    answers[i] = answersCopy[i];
-  }
-  const swapTemp2 = answers[0];
-  answers[0] = answers[correctAnswerTargetLocation];
-  answers[correctAnswerTargetLocation] = swapTemp2;
-  return answers;
-}
 
 function isAnswerSlotValid(intent) {
   const answerSlotFilled =
@@ -122,11 +84,12 @@ function handleUserGuess(userGaveUp, handlerInput) {
 
   const spokenQuestion = requestAttributes.t("QUESTION_PREFIX", country);
 
-  const roundAnswers = populateRoundAnswers(
+  const roundAnswers = utils.populateRoundAnswers(
     gameQuestions,
     currentQuestionIndex,
     correctAnswerIndex,
-    translatedQuestions
+    translatedQuestions,
+    ANSWER_COUNT
   );
   const questionIndexForSpeech = currentQuestionIndex + 1;
   let repromptText = requestAttributes.t(
@@ -184,11 +147,12 @@ function startGame(newGame, handlerInput) {
   );
   const correctAnswerIndex = Math.floor(Math.random() * ANSWER_COUNT);
 
-  const roundAnswers = populateRoundAnswers(
+  const roundAnswers = utils.populateRoundAnswers(
     gameQuestionIndexes,
     0,
     correctAnswerIndex,
-    translatedCapitalCountry
+    translatedCapitalCountry,
+    ANSWER_COUNT
   );
   const currentQuestionIndex = 0;
   const country = Object.keys(
@@ -328,7 +292,8 @@ const LocalizationInterceptor = {
   process(handlerInput) {
     const localizationClient = i18n.use(sprintf).init({
       lng: handlerInput.requestEnvelope.request.locale,
-      overloadTranslationOptionHandler: sprintf.overloadTranslationOptionHandler,
+      overloadTranslationOptionHandler:
+        sprintf.overloadTranslationOptionHandler,
       resources: languageString,
       returnObjects: true
     });
