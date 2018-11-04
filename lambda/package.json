@@ -1,0 +1,28 @@
+{
+  "name": "alexa-country-capital-quiz",
+  "version": "1.0.0",
+  "description": "a simple alexa country-capital quiz",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/m1chaeldg/alexa-country-capital-city-quiz.git"
+  },
+  "keywords": [
+    "alexa"
+  ],
+  "author": "m1chaeldg",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/m1chaeldg/alexa-country-capital-city-quiz/issues"
+  },
+  "homepage": "https://github.com/m1chaeldg/alexa-country-capital-city-quiz#readme",
+  "dependencies": {
+    "ask-sdk-core": "^2.2.0",
+    "ask-sdk-model": "^1.8.0",
+    "i18next": "^12.0.0",
+    "i18next-sprintf-postprocessor": "^0.2.2"
+  }
+}

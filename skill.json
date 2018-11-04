@@ -1,0 +1,33 @@
+{
+  "skillManifest": {
+    "publishingInformation": {
+      "locales": {
+        "en-US": {
+          "summary": "Capital and country quiz",
+          "examplePhrases": [
+            "Alexa open capital and country trivia",
+            "Alexa tell capital and country trivia to start a game",
+            "Alexa tell capital and country trivia I want to play",
+            "Alexa open capital and country quiz",
+            "Alexa tell capital and country quiz to start a game",
+            "Alexa tell capital and country quiz I want to play"
+          ],
+          "name": "capital and country quiz",
+          "description": "Many capital quizzes are about selecting the correct capital. But can you do this in reverse, too? So can you select the correct country when a capital is given?"
+        }
+      },
+      "isAvailableWorldwide": true,
+      "testingInstructions": "Open capital and country trivia.",
+      "category": "KNOWLEDGE_AND_TRIVIA",
+      "distributionCountries": []
+    },
+    "apis": {
+      "custom": {
+        "endpoint": {
+          "sourceDir": "lambda"
+        }
+      }
+    },
+    "manifestVersion": "1.0"
+  }
+}
