@@ -3,7 +3,7 @@
 
 const utils = require("./utils");
 const Alexa = require("ask-sdk-core");
-const questions = require("./questions");
+const questions = require("./country-capital-data");
 const i18n = require("i18next");
 const sprintf = require("i18next-sprintf-postprocessor");
 
@@ -214,7 +214,7 @@ function helpTheUser(newGame, handlerInput) {
 const languageString = {
   en: {
     translation: {
-      COUNTRY_CAPITALS: questions.COUNTRY_CAPITAL_EN_US,
+      COUNTRY_CAPITALS: data.COUNTRY_CAPITAL_EN_US,
       GAME_NAME: "Capital and Country Trivia",
       QUESTION_PREFIX: "What is the capital city of %s?",
       HELP_MESSAGE:
@@ -244,18 +244,18 @@ const languageString = {
   },
   "en-US": {
     translation: {
-      COUNTRY_CAPITALS: questions.COUNTRY_CAPITAL_EN_US
+      COUNTRY_CAPITALS: data.COUNTRY_CAPITAL_EN_US
     }
   },
   "en-GB": {
     translation: {
-      COUNTRY_CAPITALS: questions.COUNTRY_CAPITAL_EN_US
+      COUNTRY_CAPITALS: data.COUNTRY_CAPITAL_EN_US
     }
   },
   // TODO : for DE
   de: {
     translation: {
-      COUNTRY_CAPITALS: questions.COUNTRY_CAPITAL_DE_DE,
+      COUNTRY_CAPITALS: data.COUNTRY_CAPITAL_DE_DE,
       GAME_NAME: "Hauptstadt des Landes Wissenswertes",
       QUESTION_PREFIX: "Was ist die Hauptstadt von %s?",
       HELP_MESSAGE:
@@ -496,7 +496,7 @@ const ErrorHandler = {
 };
 
 const skillBuilder = Alexa.SkillBuilders.custom();
-export const handler = skillBuilder
+exports.handler = skillBuilder
   .addRequestHandlers(
     LaunchRequest,
     HelpIntent,
