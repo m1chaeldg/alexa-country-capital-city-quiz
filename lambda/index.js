@@ -129,8 +129,6 @@ function handleUserGuess(userGaveUp, handlerInput) {
 }
 
 function startGame(newGame, handlerInput) {
-  const utils = new Utils();
-
   const requestAttributes = handlerInput.attributesManager.getRequestAttributes();
   let speechOutput = newGame
     ? requestAttributes.t(
@@ -307,7 +305,7 @@ const LocalizationInterceptor = {
 
 const LaunchRequest = {
   canHandle(handlerInput) {
-    const { request } = handlerInput.requestEnvelope;
+    const request = handlerInput.requestEnvelope.request;
 
     return (
       request.type === "LaunchRequest" ||
@@ -322,7 +320,7 @@ const LaunchRequest = {
 
 const HelpIntent = {
   canHandle(handlerInput) {
-    const { request } = handlerInput.requestEnvelope;
+    const request = handlerInput.requestEnvelope.request;
 
     return (
       request.type === "IntentRequest" &&

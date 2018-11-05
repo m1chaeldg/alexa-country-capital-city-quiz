@@ -1,7 +1,7 @@
 {
   "interactionModel": {
     "languageModel": {
-      "invocationName": "capital and country quiz",
+      "invocationName": "capital and country trivia",
       "intents": [
         {
           "name": "AMAZON.CancelIntent",
