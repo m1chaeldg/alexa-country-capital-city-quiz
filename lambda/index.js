@@ -209,7 +209,7 @@ const languageString = {
   en: {
     translation: {
       COUNTRY_CAPITALS: data.COUNTRY_CAPITAL_EN_US,
-      GAME_NAME: "Capital and Country Trivia",
+      GAME_NAME: "Capital Country Trivia",
       QUESTION_PREFIX: "What is the capital city of %s?",
       HELP_MESSAGE:
         "I will ask you %s multiple choice questions. Respond with the number of the answer. For example, say one, two, three, or four. To start a new game at any time, say, start game. ",

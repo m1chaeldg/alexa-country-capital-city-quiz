@@ -3,18 +3,18 @@
     "publishingInformation": {
       "locales": {
         "en-US": {
-          "summary": "capital and country trivia",
+          "summary": "capital country trivia",
           "examplePhrases": [
-            "Alexa open capital and country trivia",
-            "Alexa tell capital and country trivia to start a game",
-            "Alexa tell capital and country trivia I want to play"
+            "Alexa open capital country trivia",
+            "Alexa tell capital country trivia to start a game",
+            "Alexa tell capital country trivia I want to play"
           ],
-          "name": "capital and country trivia",
+          "name": "capital country trivia",
           "description": "Many capital trivias are about selecting the correct capital. But can you do this in reverse, too? So can you select the correct country when a capital is given?"
         }
       },
       "isAvailableWorldwide": true,
-      "testingInstructions": "Open capital and country trivia.",
+      "testingInstructions": "Open capital country trivia.",
       "category": "KNOWLEDGE_AND_TRIVIA",
       "distributionCountries": []
     },

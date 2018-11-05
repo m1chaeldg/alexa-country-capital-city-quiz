@@ -1,7 +1,7 @@
 {
   "name": "alexa-country-capital-trivia",
   "version": "1.0.0",
-  "description": "a simple alexa capital and country trivia",
+  "description": "a simple alexa capital country trivia",
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
