@@ -1,3 +1,14 @@
+const getCountryAndCapital = function(source, index) {
+  const country = Object.keys(source[index])[0];
+
+  const capital = source[index][country];
+
+  return {
+    country,
+    capital
+  };
+};
+
 /**
  * generate random index from a collection using the modern version of the
  * [Fisher-Yates shuffle](http://en.wikipedia.org/wiki/Fisher–Yates_shuffle).
@@ -36,11 +47,13 @@ const populateRoundAnswers = function(
   answerCount
 ) {
   const answers = [];
-  const translatedCapitalCountry =
-    source[gameQuestionIndexes[currentQuestionIndex]];
 
-  const answer =
-    translatedCapitalCountry[Object.keys(translatedCapitalCountry)[0]];
+  const countryCapital = getCountryAndCapital(
+    source,
+    gameQuestionIndexes[currentQuestionIndex]
+  );
+
+  const answer = countryCapital.capital;
 
   const randAnsIndex = sampleIndexes(source.length, answerCount);
 
@@ -59,5 +72,6 @@ const populateRoundAnswers = function(
 
 module.exports = {
   sampleIndexes,
-  populateRoundAnswers
+  populateRoundAnswers,
+  getCountryAndCapital
 };

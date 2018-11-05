@@ -41,7 +41,7 @@ function handleUserGuess(userGaveUp, handlerInput) {
   );
   const { correctAnswerText } = sessionAttributes;
   const requestAttributes = attributesManager.getRequestAttributes();
-  const translatedQuestions = requestAttributes.t("COUNTRY_CAPITALS");
+  const translatedCountriesAndCapital = requestAttributes.t("COUNTRY_CAPITALS");
 
   if (
     answerSlotValid &&
@@ -78,9 +78,10 @@ function handleUserGuess(userGaveUp, handlerInput) {
   currentQuestionIndex += 1;
   correctAnswerIndex = Math.floor(Math.random() * ANSWER_COUNT);
 
-  const country = Object.keys(
-    translatedQuestions[gameQuestions[currentQuestionIndex]]
-  )[0];
+  const { country, capital } = utils.getCountryAndCapital(
+    translatedCountriesAndCapital,
+    gameQuestions[currentQuestionIndex]
+  );
 
   const spokenQuestion = requestAttributes.t("QUESTION_PREFIX", country);
 
@@ -88,7 +89,7 @@ function handleUserGuess(userGaveUp, handlerInput) {
     gameQuestions,
     currentQuestionIndex,
     correctAnswerIndex,
-    translatedQuestions,
+    translatedCountriesAndCapital,
     ANSWER_COUNT
   );
   const questionIndexForSpeech = currentQuestionIndex + 1;
@@ -108,9 +109,6 @@ function handleUserGuess(userGaveUp, handlerInput) {
     requestAttributes.t("SCORE_IS_MESSAGE", currentScore.toString()) +
     repromptText;
 
-  const translatedQuestion =
-    translatedQuestions[gameQuestions[currentQuestionIndex]];
-
   Object.assign(sessionAttributes, {
     speechOutput: repromptText,
     repromptText,
@@ -118,7 +116,7 @@ function handleUserGuess(userGaveUp, handlerInput) {
     correctAnswerIndex: correctAnswerIndex + 1,
     questions: gameQuestions,
     score: currentScore,
-    correctAnswerText: translatedQuestion[Object.keys(translatedQuestion)[0]][0]
+    correctAnswerText: capital
   });
 
   return responseBuilder
@@ -153,9 +151,10 @@ function startGame(newGame, handlerInput) {
     ANSWER_COUNT
   );
   const currentQuestionIndex = 0;
-  const country = Object.keys(
-    translatedCapitalCountry[gameQuestionIndexes[currentQuestionIndex]]
-  )[0];
+  const { country, capital } = utils.getCountryAndCapital(
+    translatedCapitalCountry,
+    gameQuestionIndexes[currentQuestionIndex]
+  );
 
   const spokenQuestion = requestAttributes.t("QUESTION_PREFIX", country);
   let repromptText = requestAttributes.t(
@@ -170,9 +169,6 @@ function startGame(newGame, handlerInput) {
   speechOutput += repromptText;
   const sessionAttributes = {};
 
-  const translatedQuestion =
-    translatedCapitalCountry[gameQuestionIndexes[currentQuestionIndex]];
-
   Object.assign(sessionAttributes, {
     speechOutput: repromptText,
     repromptText,
@@ -180,7 +176,7 @@ function startGame(newGame, handlerInput) {
     correctAnswerIndex: correctAnswerIndex + 1,
     questions: gameQuestionIndexes,
     score: 0,
-    correctAnswerText: translatedQuestion[Object.keys(translatedQuestion)[0]][0]
+    correctAnswerText: capital
   });
 
   handlerInput.attributesManager.setSessionAttributes(sessionAttributes);
