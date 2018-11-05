@@ -3,7 +3,7 @@
 
 const utils = require("./utils");
 const Alexa = require("ask-sdk-core");
-const questions = require("./country-capital-data");
+const data = require("./country-capital-data");
 const i18n = require("i18next");
 const sprintf = require("i18next-sprintf-postprocessor");
 

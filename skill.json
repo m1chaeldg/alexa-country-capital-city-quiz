@@ -3,7 +3,7 @@
     "publishingInformation": {
       "locales": {
         "en-US": {
-          "summary": "Capital and country quiz",
+          "summary": "capital and country quiz",
           "examplePhrases": [
             "Alexa open capital and country quiz",
             "Alexa tell capital and country quiz to start a game",
@@ -14,7 +14,7 @@
         }
       },
       "isAvailableWorldwide": true,
-      "testingInstructions": "Open capital and country trivia.",
+      "testingInstructions": "Open capital and country quiz.",
       "category": "KNOWLEDGE_AND_TRIVIA",
       "distributionCountries": []
     },
